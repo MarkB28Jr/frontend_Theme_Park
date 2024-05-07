@@ -2,7 +2,7 @@
 const Home = () => {
   return (
     <div>
-      Theme Page
+      Imagination Land
     </div>
   )
 }
