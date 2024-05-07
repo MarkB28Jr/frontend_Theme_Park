@@ -56,4 +56,4 @@ const Park = () => {
   );
 };
 
-export default Park;
+export default Park
