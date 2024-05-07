@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from 'axios'
 
 const Park = () => {
-  const [parks, setParks] = useState();
+  const [parks, setParks] = useState([]);
 
   const fetchParks = async () => {
     let response = await axios.get('https://imgainationland-f8738abfcd85.herokuapp.com/park')
