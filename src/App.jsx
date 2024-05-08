@@ -10,6 +10,7 @@ function App() {
   return (
     <div>
       <nav className="top-nav">
+
         <NavLink to="/">Home</NavLink>
         <NavLink to="/park">Park</NavLink>
         <NavLink to="/ride">Rides</NavLink>
