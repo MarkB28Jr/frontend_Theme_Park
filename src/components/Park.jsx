@@ -118,7 +118,7 @@ const Park = () => {
   // const [food, setFood] = useState()
 
   const fetchParks = async () => {
-    let response = await axios.get('http://localhost:4000/park')
+    let response = await axios.get(' https://imgainationland-f8738abfcd85.herokuapp.com/park')
     setParks(response.data)
   }
 
@@ -140,7 +140,7 @@ const Park = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:4000/park', { name: themeName, image: image, rides: rides })
+      const response = await axios.post(' https://imgainationland-f8738abfcd85.herokuapp.com/park', { name: themeName, image: image, rides: rides })
       setParks([...parks, response.data])
       setThemeName("")
       setImage("");
@@ -156,7 +156,6 @@ const Park = () => {
   }, []);
 
   return (
-
     <div className="park">
       <form onSubmit={handleSubmit} className="form-container">
         <label>Name the District: </label>
@@ -192,7 +191,6 @@ const Park = () => {
         /> */}
         <button type="submit">Enter</button>
       </form>
-
 
       <div className="parkGrid">
         {parks.map((park) => (
