@@ -201,7 +201,7 @@ const Park = () => {
             <div>
               <img src={park.image} alt="" className="parkImg" />
               <p>Rides: {park.rides}</p>
-              <p>Food: {park.food}</p>
+              {/* <p>Food: {park.food}</p> */}
             </div>
 
           </div>
