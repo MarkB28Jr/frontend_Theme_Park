@@ -110,6 +110,7 @@ import { useEffect, useState, useCallback } from "react";
 import axios from 'axios'
 
 const Park = () => {
+
   const [parks, setParks] = useState([])
   const [themeName, setThemeName] = useState("")
   const [image, setImage] = useState("")
@@ -124,7 +125,7 @@ const Park = () => {
   // Handle Changes
   const handleChange = useCallback((e) => {
     setThemeName(e.target.value);
-  }, [])
+  }, []);
   const handleImageChange = useCallback((e) => {
     setImage(e.target.value);
   }, []);
@@ -136,8 +137,8 @@ const Park = () => {
   // }, []);
 
   // Handle Form Submit
-  const handleSubmit = async(e) => {
-    e.preventDefault()
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
       const response = await axios.post('http://localhost:4000/park', { name: themeName, image: image, rides: rides })
       setParks([...parks, response.data])
@@ -155,25 +156,31 @@ const Park = () => {
   }, []);
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label>Name the District</label>
-      <input
+
+    <div className="park">
+      <form onSubmit={handleSubmit} className="form-container">
+        <label>Name the District: </label>
+        <input
+
           type="text"
           value={themeName}
           placeholder="Enter Name"
           onChange={handleChange}
-        /><br></br>
+        />
+        <br></br>
+        <label>Image URL: </label>
         <input
           type="text"
           value={image}
+          placeholder="Enter IMG URL"
           onChange={handleImageChange}
-        /><br></br>
+        />
+        <br></br>
         <select value={rides} onChange={handleRidesChange}>
           <option value="">Select Rides</option>
           <option value="Roller Coasters">Roller Coasters</option>
           <option value="Bumper Cars">Bumper Cars</option>
-          <option value="Bungee  Jumps">Bungee  Jumps</option>
+          <option value="Bungee  Jumps">Bungee Jumps</option>
           <option value="Ferris Wheel">Ferris Wheel</option>
           <option value="Tilt-A-Whir">Tilt-A-Whir</option>
         </select><br></br>
@@ -186,13 +193,17 @@ const Park = () => {
         <button type="submit">Enter</button>
       </form>
 
-      <div>
-        {parks.map(park => (
-          <div key={park._id}>
-            {park.name}
-            <img src={park.image} alt="" />
-            <p>Rides: {park.rides}</p>
-            {/* <p>Food: {park.food}</p> */}
+
+      <div className="parkGrid">
+        {parks.map((park) => (
+          <div key={park._id} className="parkItem">
+            <p className="parkName">{park.name}</p>
+            <div>
+              <img src={park.image} alt="" className="parkImg" />
+              <p>Rides: {park.rides}</p>
+              <p>Food: {park.food}</p>
+            </div>
+
           </div>
         ))}
       </div>

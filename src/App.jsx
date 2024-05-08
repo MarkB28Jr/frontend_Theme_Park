@@ -9,13 +9,14 @@ import Food from "./components/Food";
 function App() {
   return (
     <div>
-      <nav>
+      <nav className="top-nav">
+
         <NavLink to="/">Home</NavLink>
         <NavLink to="/park">Park</NavLink>
         <NavLink to="/ride">Rides</NavLink>
         <NavLink to="/food">Food</NavLink>
       </nav>
-      <main>
+      <main className="parks">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="park" element={<Park />} />
