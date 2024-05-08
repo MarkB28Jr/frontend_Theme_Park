@@ -1,11 +1,9 @@
-
 import { useEffect, useState, useCallback } from "react";
 import axios from 'axios'
 
 const Park = () => {
   const [parks, setParks] = useState([])
   const [name, setThemeName] = useState("")
-  // const [parkData, setParkData] = useState()
 
   const fetchParks = async () => {
     let response = await axios.get('https://imgainationland-f8738abfcd85.herokuapp.com/park')
@@ -16,9 +14,13 @@ const Park = () => {
     setThemeName(e.target.value);
   }, []);
 
+
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
+
+
       const response = await axios.post('https://imgainationland-f8738abfcd85.herokuapp.com/park', {name})
       setParks([...parks, response.data])
       setThemeName("");
