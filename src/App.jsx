@@ -8,7 +8,7 @@ import Food from "./components/Food";
 
 function App() {
   return (
-    <div className="parks">
+    <div>
       <nav>
         <NavLink to="/">Home</NavLink>
         <NavLink to="/park">Park</NavLink>
