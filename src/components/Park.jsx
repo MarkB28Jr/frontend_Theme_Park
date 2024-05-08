@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from 'axios'
+import axios from "axios";
 
 const Park = () => {
   const [parks, setParks] = useState([]);
@@ -13,6 +13,7 @@ const Park = () => {
   const handleChange = (e) => {
     setParkData(e.target.value)
   }
+
 
   useEffect(() => {
     fetchParks();
@@ -36,3 +37,4 @@ const Park = () => {
 }
 
 export default Park
+
