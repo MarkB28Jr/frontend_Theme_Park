@@ -91,7 +91,7 @@ const Park = () => {
       <div className="parkGrid">
         {parks.map((park) => (
           <div key={park._id} className="parkItem">
-            {park.name}
+            <p className="parkName">{park.name}</p>
             <div>
               <img src={park.image} alt="" className="parkImg" />
               <p>Rides: {park.rides}</p>
