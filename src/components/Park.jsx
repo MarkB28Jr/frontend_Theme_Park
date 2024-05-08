@@ -1,3 +1,4 @@
+
 import { useEffect, useState, useCallback } from "react";
 import axios from 'axios'
 
@@ -25,6 +26,7 @@ const Park = () => {
     }
   }
 
+
   useEffect(() => {
     fetchParks();
   }, []);
@@ -47,3 +49,4 @@ const Park = () => {
 }
 
 export default Park
+
