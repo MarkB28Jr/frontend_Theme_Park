@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
-import axios from 'axios'
+import axios from "axios";
 
 const Park = () => {
   const [parks, setParks] = useState([])
@@ -38,16 +38,16 @@ const Park = () => {
       setRides("");
       setFood("");
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   useEffect(() => {
     fetchParks();
   }, []);
 
   return (
-    <div>
+    <div className="park">
       <form onSubmit={handleSubmit}>
         <label>Name the District</label>
       <input
@@ -89,7 +89,7 @@ const Park = () => {
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Park
