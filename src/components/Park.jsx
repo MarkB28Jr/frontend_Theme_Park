@@ -16,11 +16,12 @@ const Park = () => {
     setThemeName(e.target.value);
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const response = axios.post('https://imgainationland-f8738abfcd85.herokuapp.com/park', {name})
+      const response = await axios.post('https://imgainationland-f8738abfcd85.herokuapp.com/park', {name})
       setParks([...parks, response.data])
+      setThemeName("");
     } catch (error) {
       console.log(error)
     }
