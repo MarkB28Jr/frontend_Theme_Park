@@ -2,21 +2,23 @@ import { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 
 const Park = () => {
-  const [parks, setParks] = useState([])
-  const [themeName, setThemeName] = useState("")
-  const [image, setImage] = useState("")
-  const [rides, setRides] = useState()
-  const [food, setFood] = useState()
+  const [parks, setParks] = useState([]);
+  const [themeName, setThemeName] = useState("");
+  const [image, setImage] = useState("");
+  const [rides, setRides] = useState();
+  const [food, setFood] = useState();
 
   const fetchParks = async () => {
-    let response = await axios.get('https://imgainationland-f8738abfcd85.herokuapp.com/park')
-    setParks(response.data)
-  }
+    let response = await axios.get(
+      "https://imgainationland-f8738abfcd85.herokuapp.com/park"
+    );
+    setParks(response.data);
+  };
 
   // Handle Changes
   const handleChange = useCallback((e) => {
     setThemeName(e.target.value);
-  }, [])
+  }, []);
   const handleImageChange = useCallback((e) => {
     setImage(e.target.value);
   }, []);
@@ -28,12 +30,15 @@ const Park = () => {
   }, []);
 
   // Handle Form Submit
-  const handleSubmit = async(e) => {
-    e.preventDefault()
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-      const response = await axios.post('https://imgainationland-f8738abfcd85.herokuapp.com/park', { name: themeName, image: image, rides: rides, food: food })
-      setParks([...parks, response.data])
-      setThemeName("")
+      const response = await axios.post(
+        "https://imgainationland-f8738abfcd85.herokuapp.com/park",
+        { name: themeName, image: image, rides: rides, food: food }
+      );
+      setParks([...parks, response.data]);
+      setThemeName("");
       setImage("");
       setRides("");
       setFood("");
@@ -47,49 +52,53 @@ const Park = () => {
   }, []);
 
   return (
-    <div className="park">
+    <div>
       <form onSubmit={handleSubmit}>
         <label>Name the District</label>
-      <input
+        <input
           type="text"
           value={themeName}
           placeholder="Enter Name"
           onChange={handleChange}
-        /><br></br>
-        <input
-          type="text"
-          value={image}
-          onChange={handleImageChange}
-        /><br></br>
+        />
+        <br></br>
+        <label>Enter URL link of Ride</label>
+        <input type="text" value={image} onChange={handleImageChange} />
+        <br></br>
+        <label>Select a Ride</label>
         <select value={rides} onChange={handleRidesChange}>
           <option value="">Select Rides</option>
           <option value="Roller Coasters">Roller Coasters</option>
           <option value="Bumper Cars">Bumper Cars</option>
-          <option value="Bungee  Jumps">Bungee  Jumps</option>
+          <option value="Bungee  Jumps">Bungee Jumps</option>
           <option value="Ferris Wheel">Ferris Wheel</option>
           <option value="Tilt-A-Whir">Tilt-A-Whir</option>
-        </select><br></br>
+        </select>
+        <br></br>
         <input
           type="text"
           value={food}
           placeholder="Enter Food"
           onChange={handleFoodChange}
         />
+        <br></br>
         <button type="submit">Enter</button>
       </form>
 
-      <div>
-        {parks.map(park => (
-          <div key={park._id}>
-            {park.name}
-            <img src={park.image} alt="" />
-            <p>Rides: {park.rides}</p>
-            <p>Food: {park.food}</p>
-          </div>
-        ))}
+      <div className="parks">
+        <div>
+          {parks.map((park) => (
+            <div key={park._id} className="park">
+              {park.name}
+              <img src={park.image} alt="" />
+              <p>Rides: {park.rides}</p>
+              <p>Food: {park.food}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
 };
 
-export default Park
+export default Park;
