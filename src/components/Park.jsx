@@ -53,8 +53,8 @@ const Park = () => {
 
   return (
     <div className="park">
-      <form onSubmit={handleSubmit}>
-        <label>Name the District</label>
+      <form onSubmit={handleSubmit} className="form-container">
+        <label>Name the District: </label>
         <input
           type="text"
           value={themeName}
@@ -62,7 +62,13 @@ const Park = () => {
           onChange={handleChange}
         />
         <br></br>
-        <input type="text" value={image} onChange={handleImageChange} />
+        <label>Image URL: </label>
+        <input
+          type="text"
+          value={image}
+          placeholder="Enter IMG URL"
+          onChange={handleImageChange}
+        />
         <br></br>
         <select value={rides} onChange={handleRidesChange}>
           <option value="">Select Rides</option>
@@ -84,7 +90,7 @@ const Park = () => {
 
       <div className="parkGrid">
         {parks.map((park) => (
-          <div key={park._id}>
+          <div key={park._id} className="parkItem">
             {park.name}
             <div>
               <img src={park.image} alt="" className="parkImg" />
